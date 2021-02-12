@@ -1,31 +1,62 @@
 package interval_ir;
 
+/**
+ * Elke instantie van deze klasse stelt een interval van gehele getallen voor.
+ * 
+ * @invar De bovengrens is gelijk aan de ondergrens plus de breedte.
+ *     | getBovengrens() == getOndergrens() + getBreedte()
+ */
 public class Interval {
 	
 	private int ondergrens;
 	private int breedte;
 	
-	int getOndergrens() {
+	public int getOndergrens() {
 		return ondergrens;
 	}
 	
-	int getBreedte() {
+	public int getBreedte() {
 		return breedte;
 	}
 	
-	int getBovengrens() {
+	public int getBovengrens() {
 		return ondergrens + breedte;
 	}
 	
-	void setOndergrens(int ondergrens) {
+	/**
+	 * Stelt de ondergrens van dit Interval-object in.
+	 * 
+	 * @post De ondergrens van dit Interval-object is gelijk aan de gegeven ondergrens.
+	 *     | getOndergrens() == ondergrens
+	 * @post De breedte van dit Interval-object is gelijk aan de oude breedte.
+	 *     | getBreedte() == old(getBreedte())
+	 */
+	public void setOndergrens(int ondergrens) {
 		this.ondergrens = ondergrens;
 	}
 	
-	void setBreedte(int breedte) {
+	/**
+	 * Stelt de breedte van dit Interval-object in.
+	 * 
+	 * @post De ondergrens van dit Interval-object is gelijk aan de oude ondergrens.
+	 *     | getOndergrens() == old(getOndergrens())
+	 * @post De breedte van dit Interval-object is gelijk aan de gegeven breedte.
+	 *     | getBreedte() == breedte
+	 */
+	public void setBreedte(int breedte) {
 		this.breedte = breedte;
 	}
 	
-	void setBovengrens(int bovengrens) {
+	/**
+	 * Stelt de bovengrens van dit Interval-object in.
+	 * 
+	 * @post De ondergrens van dit Interval-object is gelijk aan de oude ondergrens.
+	 *     | getOndergrens() == old(getOndergrens())
+	 * @post De breedte van dit Interval-object is gelijk aan het verschil van de gegeven bovengrens en
+	 *       de ondergrens van dit Interval-object.
+	 *     | getBreedte() == bovengrens - getOndergrens()
+	 */
+	public void setBovengrens(int bovengrens) {
 		breedte = bovengrens - ondergrens;
 	}
 
