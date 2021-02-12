@@ -42,6 +42,8 @@ public class Interval {
 	/**
 	 * Stelt de breedte van dit Interval-object in.
 	 * 
+	 * @pre De gegeven breedte is niet negatief. // contractueel programmeren
+	 *    | 0 <= breedte
 	 * @post De ondergrens van dit Interval-object is gelijk aan de oude ondergrens.
 	 *     | getOndergrens() == old(getOndergrens())
 	 * @post De breedte van dit Interval-object is gelijk aan de gegeven breedte.
@@ -54,6 +56,8 @@ public class Interval {
 	/**
 	 * Stelt de bovengrens van dit Interval-object in.
 	 * 
+	 * @pre De gegeven bovengrens is niet kleiner dan de ondergrens van dit Interval-object.
+	 *    | getOndergrens() <= bovengrens
 	 * @post De ondergrens van dit Interval-object is gelijk aan de oude ondergrens.
 	 *     | getOndergrens() == old(getOndergrens())
 	 * @post De breedte van dit Interval-object is gelijk aan het verschil van de gegeven bovengrens en
