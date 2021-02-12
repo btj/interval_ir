@@ -9,6 +9,10 @@ package interval_ir;
 public class Interval {
 	
 	private int ondergrens;
+	/**
+	 * @invar De breedte is niet negatief. // Representatie-invariant
+	 *     | 0 <= breedte
+	 */
 	private int breedte;
 	
 	public int getOndergrens() {
