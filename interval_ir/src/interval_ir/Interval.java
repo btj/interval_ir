@@ -42,22 +42,24 @@ public class Interval {
 	/**
 	 * Stelt de breedte van dit Interval-object in.
 	 * 
-	 * @pre De gegeven breedte is niet negatief. // contractueel programmeren
-	 *    | 0 <= breedte
+	 * @throws IllegalArgumentException als de breedte kleiner is dan 0
+	 *     | breedte < 0
 	 * @post De ondergrens van dit Interval-object is gelijk aan de oude ondergrens.
 	 *     | getOndergrens() == old(getOndergrens())
 	 * @post De breedte van dit Interval-object is gelijk aan de gegeven breedte.
 	 *     | getBreedte() == breedte
 	 */
 	public void setBreedte(int breedte) {
+		if (breedte < 0)
+			throw new IllegalArgumentException("breedte kleiner dan 0");
 		this.breedte = breedte;
 	}
 	
 	/**
 	 * Stelt de bovengrens van dit Interval-object in.
 	 * 
-	 * @pre De gegeven bovengrens is niet kleiner dan de ondergrens van dit Interval-object.
-	 *    | getOndergrens() <= bovengrens
+	 * @throws IllegalArgumentException als de gegeven bovengrens kleiner is dan de ondergrens van dit object
+	 *     | bovengrens < getOndergrens()
 	 * @post De ondergrens van dit Interval-object is gelijk aan de oude ondergrens.
 	 *     | getOndergrens() == old(getOndergrens())
 	 * @post De breedte van dit Interval-object is gelijk aan het verschil van de gegeven bovengrens en
@@ -65,6 +67,8 @@ public class Interval {
 	 *     | getBreedte() == bovengrens - getOndergrens()
 	 */
 	public void setBovengrens(int bovengrens) {
+		if (bovengrens < ondergrens)
+			throw new IllegalArgumentException("De bovengrens is kleiner dan de ondergrens");
 		breedte = bovengrens - ondergrens;
 	}
 
